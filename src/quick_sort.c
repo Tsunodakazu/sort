@@ -12,12 +12,31 @@ void swap(int *p, int *q){
   *p = *q;
   *q = tmp;
 }
-
-
 /*
 A[0], A[1], ..., A[n-1] をソートして昇順に書き換える関数
 */
+
 void quick_sort(int A[], int n){
+  int i, j, pivot;
+pivot = A[0];
+if(n < 1)
+  return;
+else 
+{
+ for(i = j = 0; i < n ; i ++){
+    if( A[i] <= pivot){
+        swap(A + i, A + j);
+        j ++ ;
+    }
+}    
+ for(i = 0; i < j-1; i ++){
+    int t = i + 1 ;
+    swap(A + i ,A + t);
+    }
+    quick_sort(A , j-1 );
+    quick_sort(A + j , n - j );
+    return;
+}
 }
 
 int main(){
