@@ -36,7 +36,7 @@ int quick_select(int A[], int n, int k){
   }
 }
   if(j >= k+1 && j<= k+1+same) return pivot;
-  else if(j < k+1) return quick_select(A+j, n-j-same, k-j-same);
+  else if(j < k+1) return quick_select(A+j, n-j, k-j);
   else return quick_select(A+1, j-1, k );
 }
 
@@ -46,8 +46,9 @@ int main(){
   A[0] = 0;
   A[1] = 17; //原始元
   for(i=2;i<N;i++){
-    A[i] =(long long int) A[i-1] * A[1] % N;
-  }
+     A[i] =(long long int) A[i-1] * A[1] % N;
+                   
+                   }
 
 // すべての要素が同じ場合でも計算が早く終わるか確認する
 
@@ -55,4 +56,4 @@ int main(){
     if(quick_select(A, N, i) != i) printf("ERROR %d %d\n", i, quick_select(A, N, i));
     // printf("%d th element is %d\n", i, quick_select(A, N, i));
   }
-}
+ }
