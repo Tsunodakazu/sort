@@ -29,7 +29,7 @@ else
         j ++ ;
     }
 }    
- for(i = 0; i < j-1; i ++){
+  for(i = 0; i < j-1; i ++){
     int t = i + 1 ;
     swap(A + i ,A + t);
     }
@@ -45,10 +45,10 @@ int main(){
   A[1] = 17; //原始元
   for(i=2;i<N;i++){
     A[i] = (long long int) A[i-1] * A[1] % N;
-  }
+}
 
   quick_sort(A, N);
   for(i=0;i<N;i++){
-    if(A[i] != i) printf("ERROR %dth element is %d\n", i, A[i]);
+   if(A[i] != i) printf("ERROR %dth element is %d\n", i, A[i]);
   }
 }
