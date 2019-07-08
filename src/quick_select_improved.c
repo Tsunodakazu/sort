@@ -19,6 +19,7 @@ A[0], A[1], ..., A[n-1] の中でk+1番目に小さい値を返す関数
 */
 int quick_select(int A[], int n, int k){
   int i, j, pivot;
+ int m = 0;
  int same = 0;
 // 真ん中の要素をピボットとする
   pivot = A[n/2];
@@ -35,9 +36,19 @@ int quick_select(int A[], int n, int k){
       same += 1;    
   }
 }
-  if(j >= k+1 && j<= k+1+same) return pivot;
+ m = same;
+if(m != 0){
+   for(i = 1; j-1 > i;i++){
+     if(A[i] == pivot && same >0){
+        swap(A+i,A+(j+same-m-1));
+        same -= 1;
+        i -= 1;
+         }
+  }
+ }
+ if(j >= k+1 && j<= k+1+m) return pivot;
   else if(j < k+1) return quick_select(A+j, n-j, k-j);
-  else return quick_select(A+1, j-1, k );
+  else return quick_select(A+1, j-1-m, k );
 }
 
 
@@ -46,7 +57,7 @@ int main(){
   A[0] = 0;
   A[1] = 17; //原始元
   for(i=2;i<N;i++){
-     A[i] =(long long int) A[i-1] * A[1] % N;
+            A[i] =(long long int) A[i-1] * A[1] % N;
                    
                    }
 
